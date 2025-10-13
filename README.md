@@ -56,8 +56,8 @@ The primary value of this project lies in the successful resolution of critical 
 
 1.  Clone the repository:
     ```bash
-    git clone [YOUR_GITHUB_REPO_URL]
-    cd your-repo-name
+    git clone https://github.com/Anjamarie/Goodreads-recommender-api.git
+    cd goodreads-recommender-api
     ```
 2.  Build the image (Requires Docker Buildx):
     ```bash
