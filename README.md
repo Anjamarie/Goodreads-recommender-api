@@ -32,7 +32,7 @@ The core objective was to build a low-latency, resilient service. This system pr
 
 ***
 
-## � Engineering Challenges and Solutions (High-Value Debugging)
+##  Engineering Challenges and Solutions (High-Value Debugging)
 
 The primary value of this project lies in the successful resolution of critical production deployment obstacles:
 
