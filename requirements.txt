@@ -1,0 +1,9 @@
+
+
+fastapi
+uvicorn
+gunicorn
+pandas
+scikit-surprise
+joblib
+numpy<2.0.0
