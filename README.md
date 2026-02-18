@@ -17,7 +17,7 @@ The core objective was to build a low-latency, resilient service. This system pr
 
 * **Dataset:** **GoodReads 10k** dataset, filtered to ensure high-quality, dense user-item interactions.
 * **Model:** **Singular Value Decomposition (SVD)**, a foundational matrix factorization algorithm for Collaborative Filtering.
-* **Performance:** Achieved an **RMSE of [Insert Your Recorded RMSE]** on the rating prediction task.
+* **Performance:** Achieved an **RMSE of  on the rating prediction task.
 
 ***
 
