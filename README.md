@@ -16,19 +16,13 @@ This project demonstrates a complete, end-to-end Machine Learning deployment pip
 The core objective was to build a low-latency, resilient service. This system provides real-time personalized book recommendations based on user history.
 
 * **Dataset:** **GoodReads 10k** dataset, filtered to ensure high-quality, dense user-item interactions.
-* **Model:** **Singular Value Decomposition (SVD)**, a foundational matrix factorization algorithm for Collaborative Filtering.
-* **Performance:** Achieved an **RMSE of  on the rating prediction task.
+* **Model Selection:** **Singular Value Decomposition (SVD) **, via `Surprise` library for its balance of interpretability and performance in sparse matrices.
+* **Validation Strategy:** Utilized a 90/10 Train-Test split with an RMSE of 0.8329, demonstrating the model's ability to minimize prediction error across a dense subset of 10,000 users.
+* **Cold Start Handling:** New users were recommended the top-rated books before the recommendations could become more personalized.
 
 ***
-
-##  The Full Stack and Technologies
-
-| Component | Technology | Role |
-| :--- | :--- | :--- |
-| **ML/Data** | Python, `scikit-surprise`, Pandas | Model training and artifact persistence. |
-| **API Server** | FastAPI, Gunicorn, Uvicorn | High-performance ASGI web service. |
-| **Containerization** | Docker, Buildx | Packaging the application for cross-platform portability. |
-| **Deployment** | **Google Cloud Run (GCR)**, Artifact Registry | Serverless hosting, auto-scaling, and secure image hosting. |
+## Architecture Overview
+The system follows a decoupled architecture where the model training (offline) and inference (online) are separated to ensure low-latency responses.
 
 ***
 
@@ -50,7 +44,18 @@ The primary value of this project lies in the successful resolution of critical 
     * **Port Fix:** Used the robust shell form in the `Dockerfile` to bind Gunicorn directly to the platform's injected variable: **`--bind 0.0.0.0:$PORT`**.
     * **Resource Fix:** Increased the Cloud Run service memory allocation to **2 GiB** and reduced Gunicorn workers to overcome the initial model loading memory spike.
 
+## Research & Business Applications
+This API demonstrates how localized research models can be scaled into accessible tools. In a public health or social science context, this pipeline could be adapted to provide real-time resource recommendations or intervention matching for study participants.
+
 ***
+##  The Full Stack and Technologies
+
+| Component | Technology | Role |
+| :--- | :--- | :--- |
+| **ML/Data** | Python, `scikit-surprise`, Pandas | Model training and artifact persistence. |
+| **API Server** | FastAPI, Gunicorn, Uvicorn | High-performance ASGI web service. |
+| **Containerization** | Docker, Buildx | Packaging the application for cross-platform portability. |
+| **Deployment** | **Google Cloud Run (GCR)**, Artifact Registry | Serverless hosting, auto-scaling, and secure image hosting. |
 
 ##  How to Run Locally
 
