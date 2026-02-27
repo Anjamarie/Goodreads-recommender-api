@@ -16,8 +16,8 @@ This project demonstrates a complete, end-to-end Machine Learning deployment pip
 The core objective was to build a low-latency, resilient service. This system provides real-time personalized book recommendations based on user history.
 
 * **Dataset:** **GoodReads 10k** dataset, filtered to ensure high-quality, dense user-item interactions.
-* **Model Selection:** **Singular Value Decomposition (SVD) **, via `Surprise` library for its balance of interpretability and performance in sparse matrices.
-* **Validation Strategy:** Utilized a 90/10 Train-Test split with an RMSE of 0.8329, demonstrating the model's ability to minimize prediction error across a dense subset of 10,000 users.
+* **Model Selection:** **Singular Value Decomposition (SVD)**, via `Surprise` library for its balance of interpretability and performance in sparse matrices.
+* **Validation Strategy:** Utilized a 90/10 Train-Test split with an *RMSE of 0.8329*, demonstrating the model's ability to minimize prediction error across a dense subset of 10,000 users.
 * **Cold Start Handling:** New users were recommended the top-rated books before the recommendations could become more personalized.
 
 ***
@@ -43,11 +43,18 @@ The primary value of this project lies in the successful resolution of critical 
 * **Solution:**
     * **Port Fix:** Used the robust shell form in the `Dockerfile` to bind Gunicorn directly to the platform's injected variable: **`--bind 0.0.0.0:$PORT`**.
     * **Resource Fix:** Increased the Cloud Run service memory allocation to **2 GiB** and reduced Gunicorn workers to overcome the initial model loading memory spike.
+ 
+### 4. Data Pipeline `(etl_job.py)`
+   * Automated the extraction and transformation of the GoodReads 10k dataset, ensuring schema consistency before model training.
+
+### 5. Observability `(generate_logs.py)`
+   * Implemented a logging utility to track API performance and model inference latency, essential for monitoring production health.
+
 
 ## Research & Business Applications
 This API demonstrates how localized research models can be scaled into accessible tools. In a public health or social science context, this pipeline could be adapted to provide real-time resource recommendations or intervention matching for study participants.
 
-***
+
 ##  The Full Stack and Technologies
 
 | Component | Technology | Role |
